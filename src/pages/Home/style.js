@@ -3,8 +3,9 @@ import styled from "styled-components/native";
 export const HeaderArea = styled.View`
   // background-color: white;
   margin-top: 150px;
-  flex-direction: row;
-  justify-content: space-between;
+
+  flex-direction: column;
+  //justify-content: space-between;
   align-items: center;
   //padding-right: 100%;
   //padding-left: 100%;
@@ -12,8 +13,7 @@ export const HeaderArea = styled.View`
 `;
 
 export const Header = styled.Image`
-  margin-top: 50px;
-  margin-left: 50px;
+  margin-top: 90px;
   width: 230px;
   height: 80px;
   object-fit: contain;
@@ -22,8 +22,23 @@ export const SearchArea = styled.TouchableOpacity``;
 export const SearchButton = styled.Image`
   width: 26px;
   height: 26px;
-  margin-top: 65px;
-  margin-left: 35px;
+  margin-left: 10px;
+  margin-top: 10px;
+`;
+export const InputArea = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 15px;
+  margin-left: 6%;
+  margin-right: 6%;
+`;
+export const SearchInput = styled.TextInput`
+  background-color: #273746;
+  border-radius: 25px;
+  padding-left: 20px;
+  padding-right: 20 px;
+  padding: 8px;
+  flex: 1;
 `;
 
 export const Scroller = styled.ScrollView`
@@ -43,8 +58,8 @@ export const Container = styled.SafeAreaView`
 export const ListArea = styled.View`
   padding-left: 3%;
   padding-right: 3%;
-  margin-top: 30px;
-  margin-bottom: 140px;
+  margin-top: 25px;
+  margin-bottom: 12%;
 
   //background-color: white;
 `;

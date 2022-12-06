@@ -1,69 +1,89 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import {
   HeaderArea,
   Header,
   SearchArea,
+  InputArea,
+  SearchInput,
   SearchButton,
-  Scroller,
   List,
   Container,
   ListArea,
 } from "./style";
 import Pokelist from "./pokeList";
 
-import pokeApi from "../../service/api";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { addPokemons } from "../../store/reducers";
 
 export default function Home() {
-  const [pokemon, setPokemon] = useState([]);
+  const pokemons = useSelector((state) => state.pokemons);
+  const dispacth = useDispatch();
 
   useEffect(() => {
-    getPokemons();
-  }, []);
+    dispacth(addPokemons());
+  }, [pokemons, dispacth]);
 
-  const getPokemons = () => {
-    let endpoints = [];
-    for (var i = 1; i < 70; i++) {
-      endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}`);
-    }
+  // const [pokemon, setPokemon] = useState([]);
 
-    axios
-      .all(endpoints.map((endpoint) => axios.get(endpoint)))
-      .then((results) => {
-        setPokemon(results);
-      })
-      .catch((err) => {
-        console.error("ops! ocorreu um erro : " + err);
-      });
-  };
+  // useEffect(() => {
+  //   getPokemons();
+  // }, []);
 
-  const pokemonFilter = (name) => {
-    let filteredPokemons = [];
-    if (name === "") {
-      getPokemons();
-    }
-    for (var i in pokemon) {
-      if (pokemon[i].data.name.includes(name)) {
-        filteredPokemons.push(pokemon[i]);
-      }
-    }
-    setPokemon(filteredPokemons);
-  };
+  // const getPokemons = () => {
+  //   let endpoints = [];
+  //   for (var i = 1; i < 70; i++) {
+  //     endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}`);
+  //   }
+
+  //   axios
+  //     .all(endpoints.map((endpoint) => axios.get(endpoint)))
+  //     .then((results) => {
+  //       setPokemon(results);
+  //     })
+  //     .catch((err) => {
+  //       console.error("ops! ocorreu um erro : " + err);
+  //     });
+  // };
+
+  // const pokemonFilter = (name) => {
+  //   var filteredPokemons = [];
+  //   console.log(pokemon[i]);
+  //   // if (name === "") {
+  //   //   getPokemons();
+  //   // }
+  //   for (var i in pokemon) {
+  //     if (pokemon[i].data.name.includes(name)) {
+  //       filteredPokemons.push(pokemon[i]);
+  //     }
+  //   }
+  //   console.log(filteredPokemons);
+  //   //setPokemon(filteredPokemons);
+  // };
 
   return (
     <Container>
       <HeaderArea>
         <Header source={require("../../../assets/pokemonLogo.png")} />
-        <SearchArea onPress={(e) => pokemonFilter(e.target.value)}>
-          <SearchButton source={require("../../../assets/SearchButton.png")} />
-        </SearchArea>
+        <InputArea>
+          <SearchInput
+            placeholder="Pesquisar"
+            onChangeText={(e) => pokemonFilter(e.target.value)}
+            placeholderTextColor="white"
+          />
+          <SearchArea>
+            <SearchButton
+              source={require("../../../assets/SearchButton.png")}
+            />
+          </SearchArea>
+        </InputArea>
       </HeaderArea>
 
       <ListArea>
-        {pokemon ? (
+        {pokemons ? (
           <List
-            data={pokemon}
+            data={pokemons}
             renderItem={({ item }) => {
               return (
                 <Pokelist
