@@ -1,6 +1,6 @@
 # PokeList
 
-![preview](./assets/pokelist.jpg)
+![preview](./assets/pokeversion2.jpg)
 
 Pokelist using axio with PokeApi
 

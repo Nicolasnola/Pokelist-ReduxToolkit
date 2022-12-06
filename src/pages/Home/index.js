@@ -13,54 +13,18 @@ import {
 } from "./style";
 import Pokelist from "./pokeList";
 
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { addPokemons } from "../../store/reducers";
+import { allPokemons } from "../../store/api";
 
 export default function Home() {
   const pokemons = useSelector((state) => state.pokemons);
-  const dispacth = useDispatch();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispacth(addPokemons());
-  }, [pokemons, dispacth]);
+    dispatch(allPokemons());
+  }, []);
 
-  // const [pokemon, setPokemon] = useState([]);
-
-  // useEffect(() => {
-  //   getPokemons();
-  // }, []);
-
-  // const getPokemons = () => {
-  //   let endpoints = [];
-  //   for (var i = 1; i < 70; i++) {
-  //     endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}`);
-  //   }
-
-  //   axios
-  //     .all(endpoints.map((endpoint) => axios.get(endpoint)))
-  //     .then((results) => {
-  //       setPokemon(results);
-  //     })
-  //     .catch((err) => {
-  //       console.error("ops! ocorreu um erro : " + err);
-  //     });
-  // };
-
-  // const pokemonFilter = (name) => {
-  //   var filteredPokemons = [];
-  //   console.log(pokemon[i]);
-  //   // if (name === "") {
-  //   //   getPokemons();
-  //   // }
-  //   for (var i in pokemon) {
-  //     if (pokemon[i].data.name.includes(name)) {
-  //       filteredPokemons.push(pokemon[i]);
-  //     }
-  //   }
-  //   console.log(filteredPokemons);
-  //   //setPokemon(filteredPokemons);
-  // };
+  //-----------------------------------------//
 
   return (
     <Container>

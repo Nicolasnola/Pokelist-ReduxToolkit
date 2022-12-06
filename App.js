@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import React from "react";
 import Home from "./src/pages/Home";
 import store from "./src/store/store";
 import { Provider } from "react-redux";
