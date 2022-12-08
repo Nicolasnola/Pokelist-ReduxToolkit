@@ -2,7 +2,7 @@ import styled from "styled-components/native";
 
 export const HeaderArea = styled.View`
   // background-color: white;
-  margin-top: 150px;
+  margin-top: 130px;
 
   flex-direction: column;
   //justify-content: space-between;
@@ -20,24 +20,27 @@ export const Header = styled.Image`
 `;
 export const SearchArea = styled.TouchableOpacity``;
 export const SearchButton = styled.Image`
-  width: 26px;
+  /* width: 26px;
   height: 26px;
   margin-left: 10px;
   margin-top: 10px;
+  position: "absolute";
+  left: 30;
+  top: 12; */
 `;
 export const InputArea = styled.View`
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 15px;
+  margin-top: 9px;
   margin-left: 6%;
   margin-right: 6%;
 `;
 export const SearchInput = styled.TextInput`
   background-color: #273746;
-  border-radius: 25px;
+  border-radius: 20px;
   padding-left: 20px;
   padding-right: 20 px;
-  padding: 8px;
+  padding: 12px;
   flex: 1;
 `;
 
@@ -58,42 +61,40 @@ export const Container = styled.SafeAreaView`
 export const ListArea = styled.View`
   padding-left: 3%;
   padding-right: 3%;
-  margin-top: 25px;
-  margin-bottom: 12%;
-
-  //background-color: white;
+  margin-top: 3%;
+  margin-bottom: 45%;
 `;
 
 export const Area = styled.TouchableOpacity`
   background-color: #273746;
   margin-bottom: 20px;
-  padding-left: 200px;
-  padding-right: 200px;
-
+  padding-left: 220px;
+  padding-right: 220px;
+  margin-right: 10px;
+  margin-left: 10px;
   border-radius: 20px;
   padding: 10px;
-
-  flex-direction: row;
 `;
 
 export const Avatar = styled.Image`
-  width: 100px;
-  height: 100px;
+  width: 110px;
+  height: 110px;
   border-radius: 20px;
   background-color: #ffffff;
-  //padding: 10px;
+  align-items: center;
 `;
 
 export const InfoArea = styled.View`
-  margin-left: 20px;
   margin-top: 5px;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Title = styled.Text`
   font-size: 17px;
   font-weight: bold;
   color: white;
+  align-items: center;
 `;
 
 export const InfoPoke = styled.View`
@@ -103,12 +104,13 @@ export const InfoPoke = styled.View`
   border-radius: 10px;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 `;
 
 export const InfoPokeText = styled.Text`
   font-size: 14px;
   color: #2ecc71;
   margin-bottom: 5px;
-  //align-items: center;
+  align-items: center;
 `;

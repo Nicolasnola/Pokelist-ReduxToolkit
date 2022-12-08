@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   HeaderArea,
   Header,
@@ -25,6 +25,24 @@ export default function Home() {
   }, []);
 
   //-----------------------------------------//
+  const [searchText, setSearchText] = useState("");
+  const [list, setList] = useState(pokemons);
+
+  useEffect(() => {
+    if (searchText === " ") {
+      setList(pokemons);
+    } else {
+      setList(
+        pokemons.filter((item) => {
+          if (item.data.name.indexOf(searchText) > -1) {
+            return true;
+          } else {
+            return false;
+          }
+        })
+      );
+    }
+  }, [searchText]);
 
   return (
     <Container>
@@ -33,21 +51,21 @@ export default function Home() {
         <InputArea>
           <SearchInput
             placeholder="Pesquisar"
-            onChangeText={(e) => pokemonFilter(e.target.value)}
-            placeholderTextColor="white"
+            placeholderTextColor="#808B96"
+            value={searchText}
+            autoCapitalize="none"
+            onChangeText={(e) => setSearchText(e)}
           />
-          <SearchArea>
-            <SearchButton
-              source={require("../../../assets/SearchButton.png")}
-            />
-          </SearchArea>
+          {/* <SearchButton source={require("../../../assets/SearchButton.png")} /> */}
+          <SearchArea></SearchArea>
         </InputArea>
       </HeaderArea>
 
       <ListArea>
-        {pokemons ? (
+        {list ? (
           <List
-            data={pokemons}
+            data={list}
+            numColumns={2}
             renderItem={({ item }) => {
               return (
                 <Pokelist

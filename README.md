@@ -1,8 +1,8 @@
 # PokeList
 
-![preview](./assets/pokeversion2.jpg)
-
-Pokelist using axio with PokeApi
+<div align="center">
+<img src="./assets/pokelistv3.jpg" width="300px"> 
+</div>
 
 ## tecnologias
 
